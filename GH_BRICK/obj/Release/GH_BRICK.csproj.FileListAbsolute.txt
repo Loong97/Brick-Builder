@@ -1,0 +1,6 @@
+D:\Projects\VisualStudio\GH_BRICK\GH_BRICK\bin\GH_BRICK.dll
+D:\Projects\VisualStudio\GH_BRICK\GH_BRICK\bin\GH_BRICK.pdb
+D:\Projects\VisualStudio\GH_BRICK\GH_BRICK\obj\Release\GH_BRICK.Resources.resources
+D:\Projects\VisualStudio\GH_BRICK\GH_BRICK\obj\Release\GH_BRICK.csproj.GenerateResource.Cache
+D:\Projects\VisualStudio\GH_BRICK\GH_BRICK\obj\Release\GH_BRICK.dll
+D:\Projects\VisualStudio\GH_BRICK\GH_BRICK\obj\Release\GH_BRICK.pdb
