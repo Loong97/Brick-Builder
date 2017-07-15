@@ -196,6 +196,10 @@ namespace GH_BRICK
                         }
                     }
                 }
+
+                count++;
+                targets_list[i].Add(homePlane);
+                names_list[i].Add(title[0] + i.ToString() + title[1] + count.ToString());
             }
 
             DataTree<Plane> targets = DataTools.ListToTree2(targets_list);

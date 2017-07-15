@@ -45,6 +45,7 @@ namespace GH_BRICK
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
             pManager.AddPlaneParameter("Planes", "P", "Planes for the tool to pick", GH_ParamAccess.tree);
+            pManager.AddPlaneParameter("Home", "H", "Home plane for toolpath", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -151,7 +152,11 @@ namespace GH_BRICK
 
             DataTree<Plane> plane = DataTools.ListToTree2(planes_list);
 
+            Plane home = planes_list[0][0];
+            home = GeometryTools.Move(home, home.ZAxis * 200);
+
             DA.SetDataTree(0, plane);
+            DA.SetData("Home", home);
         }
 
         public override Guid ComponentGuid
