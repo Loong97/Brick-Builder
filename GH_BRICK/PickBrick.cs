@@ -78,6 +78,7 @@ namespace GH_BRICK
             List<Point3f> corners = new List<Point3f>();
             Point3f corner = new Point3f();
             Point3f average = new Point3f();
+            Point3f average2 = new Point3f();
 
             //读取所有顶点，检测是否为8个
             vertices = brick.Vertices.ToList();
@@ -111,7 +112,6 @@ namespace GH_BRICK
             }
 
             //按据角点距离排序顶点
-            average = GeometryTools.Average(corners);
             distances.Clear();
             for(int i = 0; i < corners.Count; i++)
             {
@@ -126,6 +126,10 @@ namespace GH_BRICK
             }
             DataTools.Sort(ref distances, ref corners);
 
+            average = GeometryTools.Average(corners);
+            average2 = GeometryTools.Average(new Point3f[] { corners[2], corners[3] });
+            average2 = GeometryTools.Average(new Point3f[] { average, average2 });
+
             List<List<Plane>> planes_list = new List<List<Plane>>();
 
             //生成抓取坐标系
@@ -137,6 +141,10 @@ namespace GH_BRICK
                     if(types[i][j]== "Horizontal")
                     {
                         planes_list[i].Add(new Plane(average, GeometryTools.P2P(corners[0], corners[2]), GeometryTools.P2P(corners[0], corners[1])));
+                    }
+                    else if (types[i][j] == "Half")
+                    {
+                        planes_list[i].Add(new Plane(average2, GeometryTools.P2P(corners[0], corners[2]), GeometryTools.P2P(corners[0], corners[1])));
                     }
                     else if(types[i][j]== "Vertical")
                     {

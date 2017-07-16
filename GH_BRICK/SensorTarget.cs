@@ -132,7 +132,7 @@ namespace GH_BRICK
 
                     Point3d this_center = GeometryTools.Average(this_corners);
 
-                    if (types[i][j] == "Horizontal")
+                    if (types[i][j] == "Horizontal" || types[i][j] == "Half")
                     {
                         now_points[0] = GeometryTools.Average(this_center, this_corners[0]);
                         now_points[1] = GeometryTools.Average(this_center, this_corners[1]);
@@ -150,7 +150,7 @@ namespace GH_BRICK
                     for (int k = 0; k < now_points.Count(); k++)
                     {
                         Plane now_plane = GeometryTools.Move(bricks[i][j], GeometryTools.P2P(bricks[i][j].Origin, now_points[k]));
-                        now_plane = GeometryTools.Move(now_plane, 0, 0, retreat - 53);
+                        now_plane = GeometryTools.Move(now_plane, 0, 0, retreat - 50);
                         now_plane = GeometryTools.Transform(sensorCenter, suckerCenter, now_plane);
 
                         targets_list[i].Add(now_plane);

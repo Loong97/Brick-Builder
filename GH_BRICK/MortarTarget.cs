@@ -156,7 +156,7 @@ namespace GH_BRICK
                     Point3d[] sorted_corners = new Point3d[4];
                     Point3d[] this_corners = corners[i][j].ToArray();
 
-                    if (types[i][j] == "Horizontal")
+                    if (types[i][j] == "Horizontal" || types[i][j] == "Half")
                     {
                         sorted_corners = this_corners;
                         now_planes = GeometryTools.Hatch(bricks[i][j], sorted_corners, horizontalBorder, verticalBorder, gap);

@@ -51,7 +51,7 @@ namespace GH_BRICK
         /// <returns></returns>
         public static bool IsBrickTypeValid(List<string>[] types)
         {
-            string[] validTypes = { "Horizontal", "Vertical" };
+            string[] validTypes = { "Horizontal", "Vertical", "Half" };
             for(int i = 0; i < types.Count(); i++)
             {
                 for(int j = 0; j < types[i].Count; j++)
