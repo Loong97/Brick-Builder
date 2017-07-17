@@ -128,17 +128,26 @@ namespace GH_BRICK
                     return;
                 }
 
-                //建立抓取坐标系并加入列表
-                this_plane = new Plane(GeometryTools.Average(this_corner), GeometryTools.P2P(this_corner[0], this_corner[2]), GeometryTools.P2P(this_corner[0], this_corner[1]));
+                //将砖块类型及放砖坐标系加入列表
+                if (GeometryTools.Distance(this_corner[0], this_corner[1]) - GeometryTools.Distance(this_corner[0], this_corner[2]) > 50)
+                {
+                    types_list.Add("Vertical");
+                    this_plane = new Plane(GeometryTools.Average(this_corner), GeometryTools.P2P(this_corner[0], this_corner[2]), GeometryTools.P2P(this_corner[0], this_corner[1]));
+                }
+                else if (GeometryTools.Distance(this_corner[0], this_corner[2]) - GeometryTools.Distance(this_corner[0], this_corner[1]) > 50)
+                {
+                    types_list.Add("Horizontal");
+                    this_plane = new Plane(GeometryTools.Average(this_corner), GeometryTools.P2P(this_corner[0], this_corner[2]), GeometryTools.P2P(this_corner[0], this_corner[1]));
+                }
+                else
+                {
+                    types_list.Add("Half");
+                    this_plane = new Plane(GeometryTools.Average(new Point3f[] { this_corner[0], this_corner[1] }), GeometryTools.P2P(this_corner[0], this_corner[2]), GeometryTools.P2P(this_corner[0], this_corner[1]));
+                }
                 planes_list.Add(this_plane);
 
                 //将坐标系原点高度加入列表
                 z_list.Add((float)this_plane.Origin.Z);
-
-                //将砖块类型加入列表
-                if (GeometryTools.Distance(this_corner[0], this_corner[1]) - GeometryTools.Distance(this_corner[0], this_corner[2]) > 50) { types_list.Add("Vertical"); }
-                else if (GeometryTools.Distance(this_corner[0], this_corner[2]) - GeometryTools.Distance(this_corner[0], this_corner[1]) > 50) { types_list.Add("Horizontal"); }
-                else { types_list.Add("Half"); }
 
                 //将上顶点加入列表
                 corners_list.Add(this_corner.ToArray());

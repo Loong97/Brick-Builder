@@ -147,7 +147,7 @@ namespace GH_BRICK
                 names_list.Add(new List<string>());
 
                 int count = 0;
-                targets_list[i].Add(homePlane);
+                targets_list[i].Add(GeometryTools.Move(homePlane, new Vector3d(0, 0, (bricks[i][0].OriginZ - bricks[0][0].OriginZ) * 0.8)));
                 names_list[i].Add(title[0] + i.ToString() + title[1] + count.ToString());
 
                 for (int j = 0; j < bricks[i].Count; j++)
@@ -198,7 +198,7 @@ namespace GH_BRICK
                 }
 
                 count++;
-                targets_list[i].Add(homePlane);
+                targets_list[i].Add(GeometryTools.Move(homePlane, new Vector3d(0, 0, (bricks[i][0].OriginZ - bricks[0][0].OriginZ) * 0.8)));
                 names_list[i].Add(title[0] + i.ToString() + title[1] + count.ToString());
             }
 

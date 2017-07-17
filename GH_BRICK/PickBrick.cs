@@ -138,13 +138,9 @@ namespace GH_BRICK
                 planes_list.Add(new List<Plane>());
                 for (int j = 0; j < types[i].Count; j++)
                 {
-                    if(types[i][j]== "Horizontal")
+                    if(types[i][j] == "Horizontal" || types[i][j] == "Half")
                     {
                         planes_list[i].Add(new Plane(average, GeometryTools.P2P(corners[0], corners[2]), GeometryTools.P2P(corners[0], corners[1])));
-                    }
-                    else if (types[i][j] == "Half")
-                    {
-                        planes_list[i].Add(new Plane(average2, GeometryTools.P2P(corners[0], corners[2]), GeometryTools.P2P(corners[0], corners[1])));
                     }
                     else if(types[i][j]== "Vertical")
                     {
